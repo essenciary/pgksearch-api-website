@@ -1,0 +1,31 @@
+<% # include_template("app/resources/packages/views/jumbotron.flax.html") %>
+
+<div class="row">
+  <div class="col-md-4 section-headers">
+    <h4>
+      <i class="fa fa-fire"></i>
+      Top packages
+    </h4>
+    <%
+    # foreachvar(:partial_vars, task_local_storage(:__vars)[:top_packages_data]) do (package)
+    #  include_template("app/resources/packages/views/package_item.flax.html")
+    # end
+    %>
+  </div>
+
+  <div class="col-md-4 section-headers">
+    <h4>
+      <i class="fa fa-hourglass-start"></i>
+      Newest
+    </h4>
+    <% # include_template("app/resources/packages/views/package_item.flax.html") %>
+  </div>
+
+  <div class="col-md-4 section-headers">
+    <h4>
+      <i class="fa fa-refresh"></i>
+      Latest updates
+    </h4>
+    <% # include_template("app/resources/packages/views/package_item.flax.html") %>
+  </div>
+</div>

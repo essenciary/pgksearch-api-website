@@ -1,0 +1,156 @@
+Test app:
+  use the Pkg, Metadata, Github packages to get extended information about official packages: details, commit history, stars, watchers, etc.
+  provide functionality to search packages by various criteria
+  provide a web ui for searching packages
+
+v 0.5.x
+✔ has_many
+✔ logging in production: requests & errors, logging level, logging formatting options
+✔ bug fix: github search overwriting official packages (test app)
+✔ generators for models, controllers, resources
+✔ has_many_through, has_one_through, has_and_belongs_to_many relationships <-- sort of, added support for random relationships using SQLOn()
+✔ html/mustache layouts, views and rendering
+✔ assets management && brunch integration
+✔ authors  (test app)
+✔ add stars, forks, watchers, etc (test app) @done (16-07-12 22:22)
+
+v 0.6.x
+☐ new test app - blogging platform (articles, comments, tags, versions, users)
+✔ Gallium debugging
+✔ support for POST - routing, params
+✔ model validations
+✔ authorization
+✔ caching - data caching (redis, memcache, file system)
+✔ view / partials caching -- and not reloading views in production
+✔ reverse routing -> resource to route
+✔ parallel serving
+✔ proper error handling (50x, 40x) pages
+✔ simplify migrations to skip type and use modules
+✔ simplify tasks to skip type and use modules
+✔ add a method to automatically run all DOWN migrations
+✔ move postgres specific code into the adapter
+✔ rename methods ending in ! to end in !! and follow julia's guidelines
+✔ rename methods to not use "_" @done (16-07-12 22:23)
+✔ change from Logging to Lumberjack
+
+v 0.7.x
+# PERFORMANCE
+✔ type hinting, API consolidation, cleanup
+✔ all instances of m() must be type hinted
+✔ implement Flax, a new template system in 100% julia
+✔ review the JSON builder / JSON templates
+
+# SUPPORT
+☐ doc comments
+☐ official API docs
+☐ more tests
+☐ official website - blog, walkthroughs, tutorials, etc
+☐ app examples repos (extract them from the test apps used during development)
+
+# FEATURES
+✔ content negotiation
+✔ get the IP address of the request
+✔ refactor params to use a Params type (no any Dict{Symbol,Any})
+✔ hooks: before controller action invoked & model hooks (before save, before dehydration, after hydration, etc)
+✔ HTML Flax views (and HTML to Flax utility)
+☐ encrypt sessions and cookies
+☐ should work without a DB
+✔ refactor Router to use Route types instead of Tuples
+☐ channels (websockets communication)
+✔ link_to should support extra GET params, forward current GET params
+
+# TEST APP
+☐ "ToDo-Backend MVC" app
+
+v 0.8
+☐ add frontend framework adapters - with Vue.js as default
+☐ add the concept of State to sync app state between client (Vue.js data) and server (Genie state)
+☐ refactor the views to use data from State and generate the reactive Vue.js code on the client
+☐ server side reactivity from State (using Reactive.jl)
+☐ reactive plots, tables, lists rendering with Vuejs (reactive UI components)
+☐ Flax form helpers
+
+☐ "Hello world" app
+
+v 0.9
+☐ add utility functions for migrations (add column, add index, create table, etc)
+☐ beautify error handling (50x, 40x) pages
+☐ REPL utility to setup a new app
+☐ packages versioning (declarative packages)
+☐ custom Genie sysimg: include(joinpath(dirname(JULIA_HOME),"share","julia","build_sysimg.jl")); build_sysimg(force=true)
+☐ use macros to completely remove function invocations that produce no effect based on settings (if they are disabled from settings)
+☐ investigate more opportunities for parallelizing code
+
+v 1.0
+☐ support for plugins
+☐ admin plugin (like Django and Rails Admin)
+☐ add a debug port where you can connect through sockets and execute code against a running app
+☐ localization support - ex: config for errors messages
+☐ mailers
+☐ registration functionality - with login URLs by email (passwordless login) and regular (user / pass)
+
+v 1.1
+☐ support for mysql
+☐ support for sqlite
+☐ support for mongodb
+
+v 1.x
+☐ marketplace for Genie apps and plugins (list, search and install apps)
+
+
+Useful packages
+---------------
+https://github.com/JockLawrie/AccessControl.jl <--
+https://github.com/zachallaun/ValueDispatch.jl
+https://github.com/invenia/DateParser.jl  <-- extended date time parsing
+https://github.com/JuliaWeb/GitHub.jl
+https://github.com/snotskie/Helpme.jl
+https://github.com/IainNZ/Humanize.jl  <-- Humanize numbers
+https://github.com/Rory-Finnegan/Interfaces.jl
+https://github.com/JuliaLang/JSON.jl
+https://github.com/arypurnomoz/JulieTest.jl
+https://github.com/one-more-minute/Lazy.jl
+https://github.com/zenna/Lens.jl
+https://github.com/JuliaLang/LightXML.jl
+https://github.com/tonyhffong/Lint.jl   <-- for linting
+https://github.com/one-more-minute/MacroTools.jl
+https://github.com/JuliaArchive/Markdown.jl
+https://github.com/kmsquire/Match.jl
+https://github.com/tanmaykm/Memcache.jl
+https://github.com/simonster/Memoize.jl
+https://github.com/IainNZ/MetadataTools.jl
+https://github.com/pzion/Mongo.jl
+https://github.com/aviks/Mongrel2.jl
+https://github.com/JuliaDB/MySQL.jl
+https://github.com/jonasrauber/OSXNotifier.jl
+https://github.com/shashi/Patchwork.jl
+https://github.com/eschnett/Persist.jl
+https://github.com/wavexx/Polyglot.jl
+https://github.com/MichaelHatherly/PrivateModules.jl
+https://github.com/timholy/ProfileView.jl
+https://github.com/timholy/ProgressMeter.jl
+https://github.com/jkaye2012/Redis.jl
+https://github.com/JuliaWeb/Requests.jl
+https://github.com/one-more-minute/Requires.jl
+https://github.com/simonster/Reexport.jl
+https://github.com/JuliaDB/SQLite.jl
+https://github.com/sjkelly/SaveREPL.jl
+https://github.com/JockLawrie/SecureSessions.jl
+https://github.com/mbauman/Sparklines.jl
+https://github.com/invenia/StackTraces.jl
+https://github.com/aviks/Taro.jl
+https://github.com/sunetos/TextPlots.jl
+https://github.com/rohitvarkey/ThreeJS.jl
+https://github.com/quinnj/TimeZones.jl
+https://github.com/randyzwitch/Twitter.jl
+https://github.com/JuliaWeb/URIParser.jl
+https://github.com/Keno/SIUnits.jl
+https://github.com/rened/Watcher.jl
+https://github.com/JuliaWeb/WebSockets.jl
+https://github.com/dcjones/YAML.jl
+https://github.com/JuliaLang/ZMQ.jl
+
+# DeclarativePackages
+https://github.com/rened/DeclarativePackages.jl
+Pkg.add("DeclarativePackages")
+symlink(Pkg.dir("DeclarativePackages")*"/bin/jdp",  "$(homedir())/local/bin/jdp")

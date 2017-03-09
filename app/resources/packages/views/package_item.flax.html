@@ -1,0 +1,28 @@
+<div class="pkg">
+  <% include_template("app/resources/packages/views/package_item_heading.flax.html") %>
+  <% include_template("app/resources/packages/views/author_info.flax.html") %>
+
+  <p class="repo-description">
+    <% task_local_storage(:__vars)[:package][:repo_description] %>
+    <% if task_local_storage(:__vars)[:package][:search_headline] %>
+    <blockquote class="search_headline">
+      <p>
+        <% task_local_storage(:__vars)[:package][:search_headline] %>
+      </p>
+    </blockquote>
+    <% end %>
+  </p>
+
+  <% include_template("app/resources/packages/views/package_item_participation.flax.html") %>
+  <% include_template("app/resources/packages/views/repo_toolbar.mustache.jl") %>
+
+  <% task_local_storage(:__vars)[:package][:repo_readme] %>
+  <br/>
+  <hr/>
+  <p class="text-center">GitHub README</p>
+  <hr/>
+  <p class="repo-readme">
+    <% task_local_storage(:__vars)[:package][:repo_readme] %>
+  </p>
+  <% task_local_storage(:__vars)[:package][:repo_readme] %>
+</div>
