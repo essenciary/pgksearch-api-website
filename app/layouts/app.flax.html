@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% Flax.include_template("app/layouts/head.flax.html") %>
+  <head>
+    <% include_template("app/layouts/head.flax.html") %>
+  </head>
   <body>
     <div class="container">
       <%
-        Flax.include_template("app/layouts/main_menu.flax.html")
-        Flax.@yield
-        Flax.include_template("app/layouts/footer.flax.html")
+        include_template("app/layouts/main_menu.flax.html")
+        @yield
+        include_template("app/layouts/footer.flax.html")
       %>
     </div>
-    <% # include_template("app/layouts/javascripts.flax.html") %>
+    <% include_template("app/layouts/javascripts.flax.html") %>
   </body>
 </html>

@@ -1,12 +1,12 @@
 <div class="btn-group-ms author-info" role="group">
-  <a class="btn btn-link" title="Author {{:author_fullname}} {{:author_company}}" href="{{:author_html_url}}" data-toggle="tooltip" data-placement="right">
+  <a class="btn btn-link" data-toggle="tooltip" data-placement="right" title="<: 'Author ' * @vars(:package)[:author_fullname] * ' ' * @vars(:package)[:author_company] :>" href="<: @vars(:package)[:author_html_url] :>">
     <i class="fa fa-user"></i>
-    {{:author_name}} 
+    <% @vars(:package)[:author_name] %>
   </a>
-  {{#:author_followers_count}}
+  <% if @vars(:package)[:author_followers_count] > 0 %>
   <span class="badge" title="Followers" data-toggle="tooltip">
     <i class="fa fa-binoculars"></i>
-    {{:author_followers_count}}
+    <% @vars(:package)[:author_followers_count] %>
   </span>
-  {{/:author_followers_count}}
+  <% end %>
 </div>

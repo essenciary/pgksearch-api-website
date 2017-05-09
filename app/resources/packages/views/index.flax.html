@@ -1,4 +1,4 @@
-<% # include_template("app/resources/packages/views/jumbotron.flax.html") %>
+<% include_template("app/resources/packages/views/jumbotron.flax.html") %>
 
 <div class="row">
   <div class="col-md-4 section-headers">
@@ -7,9 +7,9 @@
       Top packages
     </h4>
     <%
-    # foreachvar(:partial_vars, task_local_storage(:__vars)[:top_packages_data]) do (package)
-    #  include_template("app/resources/packages/views/package_item.flax.html")
-    # end
+    foreachvar(:package, task_local_storage(:__vars)[:top_packages_data]) do(_)
+      include_template("app/resources/packages/views/package_item.flax.html")
+    end
     %>
   </div>
 
@@ -18,7 +18,11 @@
       <i class="fa fa-hourglass-start"></i>
       Newest
     </h4>
-    <% # include_template("app/resources/packages/views/package_item.flax.html") %>
+    <%
+    foreachvar(:package, task_local_storage(:__vars)[:new_packages_data]) do (_)
+      include_template("app/resources/packages/views/package_item.flax.html")
+    end
+    %>
   </div>
 
   <div class="col-md-4 section-headers">
@@ -26,6 +30,10 @@
       <i class="fa fa-refresh"></i>
       Latest updates
     </h4>
-    <% # include_template("app/resources/packages/views/package_item.flax.html") %>
+    <%
+    foreachvar(:package, task_local_storage(:__vars)[:updated_packages_data]) do (_)
+      include_template("app/resources/packages/views/package_item.flax.html")
+    end
+    %>
   </div>
 </div>

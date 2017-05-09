@@ -2,27 +2,27 @@
   <% include_template("app/resources/packages/views/package_item_heading.flax.html") %>
   <% include_template("app/resources/packages/views/author_info.flax.html") %>
 
-  <p class="repo-description">
-    <% task_local_storage(:__vars)[:package][:repo_description] %>
-    <% if task_local_storage(:__vars)[:package][:search_headline] %>
+  <div class="repo-description">
+    <% @vars(:package)[:repo_description] %>
+    <% if @vars(:package)[:search_headline] != "" %>
     <blockquote class="search_headline">
       <p>
-        <% task_local_storage(:__vars)[:package][:search_headline] %>
+        <% @vars(:package)[:search_headline] %>
       </p>
     </blockquote>
     <% end %>
-  </p>
+  </div>
 
   <% include_template("app/resources/packages/views/package_item_participation.flax.html") %>
-  <% include_template("app/resources/packages/views/repo_toolbar.mustache.jl") %>
+  <% include_template("app/resources/packages/views/repo_toolbar.flax.html") %>
 
-  <% task_local_storage(:__vars)[:package][:repo_readme] %>
-  <br/>
-  <hr/>
+  <% if @vars(:package)[:repo_readme] != "" %>
+  <br>
+  <hr>
   <p class="text-center">GitHub README</p>
-  <hr/>
+  <hr>
   <p class="repo-readme">
-    <% task_local_storage(:__vars)[:package][:repo_readme] %>
+    <% @vars(:package)[:repo_readme] %>
   </p>
-  <% task_local_storage(:__vars)[:package][:repo_readme] %>
+  <% end %>
 </div>

@@ -1,6 +1,6 @@
 <h5>
-  <a href="/packages/{{:id}}">{{:name}}</a>
-  {{#:official}}
+  <a href="/packages/$(Flax.@vars(:package)[:id])">$(Flax.@vars(:package)[:name])</a>
+  <% if Flax.@vars(:package)[:official] %>
   <i class="fa fa-check-circle" data-toggle="tooltip" title="Official package"></i>
-  {{/:official}}
+  <% end %>
 </h5>

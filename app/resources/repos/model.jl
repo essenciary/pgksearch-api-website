@@ -1,7 +1,4 @@
-using GitHub
-using SearchLight
-using DateParser
-@dependencies
+using GitHub, SearchLight, DateParser
 
 export Repo, Repos
 
@@ -72,12 +69,7 @@ end
 
 module Repos
 
-using App
-@dependencies
-using Memoize
-using DateParser
-using GitHub
-using JSON
+using App, Memoize, DateParser, GitHub, JSON, SearchLight, Genie, App.Repo, Logger
 
 function dehydrate(repo::App.Repo, field::Symbol, value::Any)
   return  if field == :participation
@@ -101,7 +93,7 @@ end
 
 @memoize function readme_from_github(repo::App.Repo; parse_markdown = false)
   readme =  try
-              Nullable(GitHub.readme(Base.get(repo.github), auth = Genie.GITHUB_AUTH))
+              Nullable(GitHub.readme(Base.get(repo.github), auth = App.GITHUB_AUTH))
             catch ex
               Logger.log(ex, :debug)
               Nullable()
@@ -132,7 +124,7 @@ function readme(repo::App.Repo; parse_markdown = true)
 end
 
 @memoize function participation_from_github(repo::App.Repo)
-  stats = GitHub.stats(Base.get(repo.github), "participation", auth = Genie.GITHUB_AUTH)
+  stats = GitHub.stats(Base.get(repo.github), "participation", auth = App.GITHUB_AUTH)
   part_data = mapreduce(x -> string(Char(x)), *, stats.data) |> JSON.parse
 
   try
@@ -149,7 +141,7 @@ end
 
 function from_package(package::Package)
   github_repo = GitHub.Repo(Packages.fullname(package))
-  repo_info = GitHub.repo(Packages.fullname(package), auth = Genie.GITHUB_AUTH)
+  repo_info = GitHub.repo(Packages.fullname(package), auth = App.GITHUB_AUTH)
   repo = Repo(
                       github = github_repo,
                       package_id = package.id,

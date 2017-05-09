@@ -34,5 +34,4 @@ type Author <: AbstractModel
 end
 
 module Authors
-using Genie
 end

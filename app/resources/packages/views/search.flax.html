@@ -1,10 +1,17 @@
 <div class="row">
   <div class="page-header">
-    <h3>Search results <small> for "{{:search_term}}"</small></h3>
+    <h3>Search results
+      <small>
+        for 
+        <% @vars(:search_term) %>
+      </small>
+    </h3>
   </div>
 </div>
 <div class="row">
-  {{#:packages}}
-  {{> app/resources/packages/views/package_item.mustache.jl}}
-  {{/:packages}}
+  <%
+  foreachvar(:package, @vars(:packages)) do (_)
+    include_template("app/resources/packages/views/package_item.flax.html")
+  end
+  %>
 </div>

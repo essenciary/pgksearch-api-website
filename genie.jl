@@ -7,7 +7,7 @@ Bootstraps the Genie framework setting up paths and workers. Invoked automatical
 """
 function bootstrap_genie() :: Void
   dirname(@__FILE__) |> cd
-  include(abspath(joinpath("lib", "Genie", "src", "branding.jl")))
+  include(joinpath(Pkg.dir("Genie"), "src", "branding.jl"))
 
   const DEFAULT_NWORKERS_REPL = 1
   const DEFAULT_NWORKERS_SERVER = 1
@@ -19,16 +19,18 @@ function bootstrap_genie() :: Void
 
   nworkers() < parse(Int, ENV["NWORKERS"]) && addprocs(parse(Int, ENV["NWORKERS"]) - nworkers())
 
-  @everywhere push!(LOAD_PATH,  abspath(joinpath("lib", "Genie", "src")),
-                                abspath(joinpath("lib", "SearchLight", "src")),
-                                abspath(joinpath("lib", "Flax", "src")),
+  @everywhere push!(LOAD_PATH,  joinpath(Pkg.dir("Genie"), "src"),
+                                joinpath(Pkg.dir("SearchLight"), "src"),
+                                joinpath(Pkg.dir("Flax"), "src"),
                                 abspath(pwd()))
 end
 
 @everywhere bootstrap_genie()
-@everywhere import Genie
+@everywhere import Genie, App
 using App
-@dependencies
+App.@dependencies
+
+@everywhere Genie.run()
 
 try
   using OhMyREPL

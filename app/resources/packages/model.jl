@@ -1,4 +1,4 @@
-export Package
+export Package, Packages
 
 type Package <: AbstractModel
   _table_name::String
@@ -37,8 +37,8 @@ function Package(name::String, url::String)
 end
 
 module Packages
-using Genie, App
-@dependencies
+
+using Genie, App, SearchLight
 
 function fullname(p::Package)
   url_parts = split(p.url, '/', keep = false)
@@ -81,11 +81,16 @@ function prepare_data(packages; details = false, search_results = Dict())
 
     if details
       package_item[:repo_readme] = repo.readme |> Markdown.parse |> Markdown.html
+    else
+      package_item[:repo_readme] = ""
     end
 
     if ! isempty(search_results)
       package_item[:search_rank] = search_results[package_item[:id]][:rank]
       package_item[:search_headline] = search_results[package_item[:id]][:headline] |> Markdown.parse |> Markdown.plain
+    else
+      package_item[:search_rank] = 0
+      package_item[:search_headline] = ""
     end
 
     push!(packages_data, package_item)
