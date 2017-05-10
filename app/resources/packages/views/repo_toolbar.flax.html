@@ -13,7 +13,7 @@
   </button>
   <% if @vars(:package)[:repo_html_url] != "" %>
   <button type="link" class="btn btn-default" title="View on GitHub" data-toggle="tooltip">
-    <a href="{{:repo_html_url}}" target="_new">
+    <a href="<$ $(repo_html_url) $>" target="_new">
       <i class="fa fa-github"></i>
       <% @vars(:package)[:name] %>
     </a>
