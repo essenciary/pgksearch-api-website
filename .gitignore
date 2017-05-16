@@ -2,9 +2,11 @@ _debug/
 
 # App
 config/secrets.jl
-log/
-session/
-cache/
+log/*
+session/*
+cache/*
+docs/build
+!*.gitkeep
 
 # Vagrant
 .vagrant
